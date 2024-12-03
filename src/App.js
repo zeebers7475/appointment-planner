@@ -9,7 +9,7 @@ function App() {
   Define state variables for 
   contacts and appointments 
   */
-  const [contacts, setContacts] = useState([{name: "Kris", phone: 9088722745,}]);
+  const [contacts, setContacts] = useState([{name: 'Kris', phone: '9088722745', email: 'zeebers7475@gmail.com'}]);
   const [appointments, setAppointments] = useState([]);
  
   /*
@@ -23,7 +23,8 @@ function App() {
 
   const removeContact = (name) => {
     if(name) {
-      const newContacts = contacts.filter(name !== name)
+      //console.log(contacts.filter())
+      const newContacts = contacts.filter((eachContact) => eachContact.name !== name)
       setContacts(newContacts)
     }
   }
@@ -40,7 +41,7 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={ <Root/> }>
       <Route index element={ <Navigate to={ROUTES.CONTACTS} replace/> }/>
-      <Route path={ROUTES.CONTACTS} element={ <ContactsPage contacts={contacts} addContact={addContact} removeContacts={removeContact} /> /* Add props to ContactsPage */ }/>
+      <Route path={ROUTES.CONTACTS} element={ <ContactsPage contacts={contacts} addContact={addContact} removeContact={removeContact} /> /* Add props to ContactsPage */ }/>
       <Route path={ROUTES.APPOINTMENTS} element={ <AppointmentsPage appointments={appointments} addAppointment={addAppointment} removeAppointment={removeAppointment} /> /* Add props to AppointmentsPage */ }/>
     </Route>
   ));
