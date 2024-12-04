@@ -1,4 +1,5 @@
 import React from "react";
+import { ContactPicker } from "../contactPicker/ContactPicker"
 
 const getTodayString = () => {
   const [month, day, year] = new Date()
@@ -9,8 +10,8 @@ const getTodayString = () => {
 
 export const AppointmentForm = ({
   contacts,
-  title,
-  setTitle,
+  aptName,
+  setAptName,
   contact,
   setContact,
   date,
@@ -20,8 +21,8 @@ export const AppointmentForm = ({
   handleSubmit
 }) => {
 
-  const handleTitleOnChange = (e) => {
-    setTitle(e.target.value)
+  const handleAptNameOnChange = (e) => {
+    setAptName(e.target.value)
   }
 
   const handleDateOnChange = (e) => {
@@ -32,13 +33,17 @@ export const AppointmentForm = ({
     setTime(e.target.value)
   }
 
+  const handleContactOnChange = (e) => {
+    console.log(e.target.value)
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit} style={{maxWidth: "300px", marginTop: "20px"}}>
-        <input onChange={handleTitleOnChange} type="text" name="title" id="title" value={title} placeholder="Title" />
-        <input onChange={handleTitleOnChange} type="text" name="contact" id="contact" value={contact} placeholder="Contact" />
-        <input onChange={handleDateOnChange} type="date" name="date" id="date" value={date} placeholder="Date" />
+        <input onChange={handleAptNameOnChange} type="text" name="title" id="title" value={aptName} placeholder="Title" />
+        <input onChange={handleDateOnChange} type="date" name="date" id="date" value={date} placeholder="Date" min={getTodayString()} />
         <input onChange={handleTimeOnChange} type="time" name="time" id="time" value={time} placeholder="Time" />
+        <ContactPicker contacts={contacts} setContact={setContact}/>
         <input type="submit" name="submit" value="Submit" />
       </form>
     </>
