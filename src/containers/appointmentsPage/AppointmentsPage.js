@@ -3,11 +3,16 @@ import React, { useState } from "react";
 import { AppointmentForm } from "../../components/appointmentForm/AppointmentForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const AppointmentsPage = () => {
+export const AppointmentsPage = (props) => {
   /*
   Define state variables for 
   appointment info
   */
+
+  const appointments = props.appointments;
+  const addAppointment = props.addAppointment;
+  const removeAppointment = props.removeAppointment;
+  const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +25,8 @@ export const AppointmentsPage = () => {
   return (
     <div>
       <section>
-        <h2>Add Appointment</h2>
+        <button onClick={() => {setShowForm(!showForm)}}>Add Appointment</button>
+        {showForm ? <AppointmentForm /> : <></>}
       </section>
       <hr />
       <section>

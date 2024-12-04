@@ -16,12 +16,10 @@ export const ContactForm = ({
 
   const handleNameChange = (e) => {
     setName(e.target.value)
-    console.log(name)
   }
 
   const handlePhoneChange = (e) => {
     setPhone(e.target.value)
-    console.log(phone)
   }
 
   const handleEmailChange = (e) => {
